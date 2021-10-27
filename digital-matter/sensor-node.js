@@ -218,7 +218,7 @@ function bytesToInt24(bytes, startIndex)
 	
 	var value = (bytes[startIndex + 2] << 16) + (bytes[startIndex + 1] << 8) + bytes[startIndex];
 
-	if(value & 0x800000 > 0)
+	if((value & 0x800000) > 0)
 	{
 		value -= 0x1000000;
 	}
