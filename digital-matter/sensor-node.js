@@ -107,8 +107,8 @@ function decodeUplink(input)
 				}
 
 				dataFieldValues['digital_input1_state'] = (payloadBytes[byteIndex] & 1) > 0;
-				dataFieldValues['digital_input1_state'] = (payloadBytes[byteIndex] & 2) > 0;
-				dataFieldValues['digital_input1_state'] = (payloadBytes[byteIndex] & 4) > 0;
+				dataFieldValues['digital_input2_state'] = (payloadBytes[byteIndex] & 2) > 0;
+				dataFieldValues['digital_input3_state'] = (payloadBytes[byteIndex] & 4) > 0;
 				byteIndex += 1;
 				break;
 			
@@ -201,7 +201,7 @@ function bytesToInt16(bytes, startIndex)
 	
 	var value = (bytes[startIndex + 1] << 8) + bytes[startIndex];
 
-	if(value & 0x8000 > 0)
+	if((value & 0x8000) > 0)
 	{
 		value -= 0x10000;
 	}
@@ -235,7 +235,7 @@ function bytesToInt32(bytes, startIndex)
 	
 	var value = (bytes[startIndex + 3] << 24) + (bytes[startIndex + 2] << 16) + (bytes[startIndex + 1] << 8) + bytes[startIndex];
 
-	if(value & 0x80000000 > 0)
+	if((value & 0x80000000) > 0)
 	{
 		value -= 0x100000000;
 	}
