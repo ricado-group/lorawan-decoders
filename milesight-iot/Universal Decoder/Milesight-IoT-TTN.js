@@ -98,9 +98,9 @@ function Decoder(bytes, port) {
             i += 2;
         }
         // Water Level (EM500-SWL)
-        // Unit: cm
+        // Unit: mm
         else if (channel_id === 0x03 && channel_type === 0x77) {
-            decoded.water_level = readUInt16LE(bytes.slice(i, i + 2));
+            decoded.water_level = readUInt16LE(bytes.slice(i, i + 2)) * 10;
             i += 2;
         }
         // Pressure (EM500-PP)
